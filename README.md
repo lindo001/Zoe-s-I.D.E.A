@@ -10,7 +10,6 @@ Zoe's I.D.E.A. Engine is a decision-tree based bot that aims to simplify task wi
 
 - [ ] Be able to open by runing a bash script
 - [ ] Be able to give out random Quick tips
-- [ ] Be able to open by runing a bash script 
 - [ ] Be able to interact with some apps - open apps like intellij
 
 
