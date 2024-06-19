@@ -1,6 +1,7 @@
 import json
 import random
-def tips():
+
+def tips()-> None:
     print("Done Installing :e")
     
     file = "vault/tips.json"
@@ -9,5 +10,9 @@ def tips():
         data = json.load(jsoon_file)
         print(data["coding_principles"][number])
     jsoon_file.close()
+    
+    
+    
+    
 if __name__ == "__main__":
     tips()
