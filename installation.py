@@ -1,16 +1,12 @@
-# Intalls a bash script 
 import os
 def install():
     available_attempts:int = 10
     current_dir = working_dir = os.getcwd()
-    #should remove itself after installing
     while True:
-        print("We are :"+ current_dir)
-        # should check if its in root 
-        # if true head to bach else one step higher and repeat process
-        if available_attempts ==0:break
+        if available_attempts ==0:
+            print("failed to locate bin folder")
+            break
         if current_dir == "/": 
-            print ("Found it")
             os.chdir("bin")
             install_script(working_dir)
             break
@@ -20,10 +16,15 @@ def install():
         available_attempts-=1
         
 def install_script(working_dir):
-    
-    print("ff "+ working_dir)
-    # os.remove
-    pass
+    script_path = os.path.join(working_dir, "main.py")
+    delete_file = os.path.join(working_dir,"installation.py")
+    with open("zoe", "w") as f:
+        f.write(f"#!/bin/bash\npython3 {script_path}")
+    os.chmod("zoe", 0o755)
+    os.system("clear")
+    print(f"Done Installing :,")
+    os.remove(delete_file)
+
 
 if __name__=="__main__":
     install()
