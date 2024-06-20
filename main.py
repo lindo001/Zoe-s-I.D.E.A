@@ -1,6 +1,11 @@
 import json
 import random
 
+from costom.external_file_reader import Reader
+
+
+
+
 def tips()-> None:
     print("Done Installing :e")
     
@@ -11,8 +16,11 @@ def tips()-> None:
         print(data["coding_principles"][number])
     jsoon_file.close()
     
+ 
     
     
     
 if __name__ == "__main__":
-    tips()
+    
+    et = Reader()
+    print(et.read_text("hlink.txt"))
