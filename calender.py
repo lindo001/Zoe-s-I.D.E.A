@@ -7,7 +7,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-SCOPES = ["https://www.googleapis.com/auth/calendar","https://www.googleapis.com/auth/drive"]
+SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
 
 def main():
@@ -68,6 +68,7 @@ def main():
             {"email": "lintmash@gmail.com"}
         ]
     }
+    
     event = service.events().insert(calendarId="primary", body=event).execute()
     print(event.get('htmlLink'))
 
@@ -79,6 +80,29 @@ def main():
     print(f"An error occurred: {error}")
     
     
+    # event = {
+    #     "summary": "RedPlay",
+    #     "location": "Cool",
+    #     "description": "something cool",
+    #     "colorId": "5",  # Importance
+    #     "start": {
+    #         "dateTime": "2024-06-23T09:00:00+02:00",
+    #         "timeZone": "Africa/Johannesburg"
+    #     },
+    #     "end": {
+    #         "dateTime": "2024-06-23T19:00:00+02:00",
+    #         "timeZone": "Africa/Johannesburg"
+    #     },
+    #     "attendees": [
+    #         {"email": "lintmash@gmail.com"}
+    #     ]
+    # }    
+    
+    summary = input("Summary")
+    location = input("Where is it held default is online")
+    description = input("description")
+    importance = input("Color code")
+    startZ
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
 
 
 ## About 
-Zoe's I.D.E.A. Engine is a decision-tree based bot that aims to simplify task with it being as light, simple and user friendly as possible allowing you to be able to save ssoutions from the internet
+Zoe's I.D.E.A. Engine is a decision-tree based bot that aims to simplify task with it being as light, simple and user friendly as possible allowing you to be able to save soutions from the internet
 
 
 ## What can Zoe do:
