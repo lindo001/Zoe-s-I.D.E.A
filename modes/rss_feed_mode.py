@@ -1,12 +1,12 @@
 import feedparser
 from tabulate import tabulate
 
+import json_and_text 
+
 data = []
 summary = []
-def fetch_feed():
-    url = "https://www.ign.com/rss/articles/feed?tags=games"
-    # url = "https://feeds.capi24.com/v1/Search/articles/News24/TopStories/rss"
-    # url = "https://www.freecodecamp.org/news/rss"
+def fetch_feed(url):
+    
     rss_url = "feeds.ign.com/ign/games-all"
     f = feedparser.parse(url)
     if f.status ==200:
@@ -30,4 +30,6 @@ def formart_to_table():
 
 
 if __name__=="__main__":
-    fetch_feed()
+    pass
+    # Converter()
+    # fetch_feed()

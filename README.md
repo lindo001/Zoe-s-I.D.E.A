@@ -1,8 +1,8 @@
-# Zoe's I.D.E.A. Engine
+# Recall Engine
 
 
 ## About 
-Zoe's I.D.E.A. Engine is a decision-tree based bot that aims to simplify task with it being as light, simple and user friendly as possible allowing you to be able to save soutions from the internet
+Recall Engine formarly caalled (Zoe's I.D.E.A) is a decision-tree based bot that aims to simplify recalling past solutions you've encounted when programming and storing them in one place, being light, simple and user friendly as possible. 
 
 
 ## What can Zoe do:
@@ -12,10 +12,15 @@ Zoe's I.D.E.A. Engine is a decision-tree based bot that aims to simplify task wi
 - ~~Be able to interact with some apps - open apps like intellij~~
 - [x] Be able to fetch data from the internet using rss feed
 - [x] Be able to download videos from Youtube
-
+- [x] Be able to view and add events to your Calender
+- [ ] Be able to upload and and dowload to your google drive
+- [ ] Complete the recall tree and upload
 
 ## Currently Supports 
     Linux
 
+## Known Issues
+- Non that I'm aware of.
+- If you find any bugs please email or post on Issue Board
 
 

@@ -10,8 +10,11 @@ from googleapiclient.errors import HttpError
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
 
-def main():
+
+
+def main(selected):
   creds = None
+  service =None
   if os.path.exists("token.json"):
     creds = Credentials.from_authorized_user_file("token.json", SCOPES[0])
     
@@ -24,18 +27,26 @@ def main():
     
     with open("token.json", "w") as token:
       token.write(creds.to_json())
+      service = build("calendar", "v3", credentials=creds)
 
   try:
-    service = build("calendar", "v3", credentials=creds)
+    
+    if selected == "1":
+      upload(service)
+    elif selected =="":
+      retrive(service)
+ 
+  except HttpError as error:
+    print(f"An error occurred: {error}")
 
+def retrive(service):
     now = datetime.datetime.now().isoformat() + "Z"  
-    print("Getting the upcoming 10 events")
     events_result = (
         service.events()
         .list(
             calendarId="primary",
             timeMin=now,
-            maxResults=10,
+            maxResults=7,
             singleEvents=True,
             orderBy="startTime",
         )
@@ -50,18 +61,26 @@ def main():
      
     for event in events:
       start = event["start"].get("dateTime", event["start"].get("date"))
-      print(start, event["summary"])
+      print(start.split("T")[0], event["summary"])    
+   
+def upload(service):
+    
+    summary = input("Summary : ")
+    location = input("Where is it held default is online : ")
+    description = input("description : ")
+    date = input("expected formart :month-date (06-23)  : ")
+
+    
     event = {
-        "summary": "RedPlay",
-        "location": "Cool",
-        "description": "something cool",
-        "colorId": "5",  # Importance
+        "summary": summary,
+        "location": location,
+        "description": description,
         "start": {
-            "dateTime": "2024-06-23T09:00:00+02:00",
+            "dateTime": "2024-"+date+"T09:00:00+02:00",
             "timeZone": "Africa/Johannesburg"
         },
         "end": {
-            "dateTime": "2024-06-23T19:00:00+02:00",
+            "dateTime": "2024-"+date+"T19:00:00+02:00",
             "timeZone": "Africa/Johannesburg"
         },
         "attendees": [
@@ -71,39 +90,14 @@ def main():
     
     event = service.events().insert(calendarId="primary", body=event).execute()
     print(event.get('htmlLink'))
-
     
- 
- 
- 
-  except HttpError as error:
-    print(f"An error occurred: {error}")
-    
-    
-    # event = {
-    #     "summary": "RedPlay",
-    #     "location": "Cool",
-    #     "description": "something cool",
-    #     "colorId": "5",  # Importance
-    #     "start": {
-    #         "dateTime": "2024-06-23T09:00:00+02:00",
-    #         "timeZone": "Africa/Johannesburg"
-    #     },
-    #     "end": {
-    #         "dateTime": "2024-06-23T19:00:00+02:00",
-    #         "timeZone": "Africa/Johannesburg"
-    #     },
-    #     "attendees": [
-    #         {"email": "lintmash@gmail.com"}
-    #     ]
-    # }    
-    
-    summary = input("Summary")
-    location = input("Where is it held default is online")
-    description = input("description")
-    importance = input("Color code")
-    startZ
-
 
 if __name__ == "__main__":
-  main()
+  while True:
+    selected = input("1.To upload \n 2.To retrive ")
+    if selected =="1" or selected=="2":
+      main(selected)
+    elif selected== "q":
+      break
+    else:
+      print("Incorrect input")
