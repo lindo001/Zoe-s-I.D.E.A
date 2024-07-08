@@ -26,9 +26,30 @@ class Converter:
 
 
 
+    def set_json(self,user_input:str,bot_response:str,required_words:str):
 
 
-# if __name__ == "__main__":
-#     print(Converter("txt_files/rss_links.json").get_data()["Development News"])
+        # import json
 
-# improve unit tests - everyone should work on unit tests - run tests before and after pushing
+        # Path to your JSON file
+        json_file = "txt_files/recall.json"
+
+        # Load existing JSON data
+        with open(json_file, "r") as f:
+            existing_data = json.load(f)
+
+        # New data to add
+        new_entry = {
+            "bot_response": bot_response,
+            "required_words": required_words.split(),
+            "single_sentence": len(user_input)>1
+        }
+
+        # Append new entry to existing data
+        existing_data.append(new_entry)
+
+        # Write updated data back to JSON file
+        with open(json_file, "w") as f:
+            json.dump(existing_data, f, indent=4)
+
+        print("New entry added to JSON file.")

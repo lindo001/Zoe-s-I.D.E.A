@@ -1,0 +1,18 @@
+[
+    
+  {
+    "user_input":["Hello"],
+    "bot_response":"Fine and you",
+    "required_words":["hey"]
+
+  }
+  ,{
+      "user_input": ["where", "to", "put","bash","script"],
+      "bot_response": "/usr/local/bin",
+      "required_words": ["where","put", "bash", "script"]
+    },{
+        "user_input": ["where", "should", "I","store","script"],
+        "bot_response": "/usr/local/bin",
+        "required_words": ["where","how","store", "bash", "script","scripts"]
+      }
+  ]
